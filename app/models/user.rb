@@ -12,6 +12,14 @@ class User < ApplicationRecord
   # --- Gem: acts_as_favoritor ---
   acts_as_favoritor
 
+  # --- Callbacks ---
+  # Automatically create a cart when a new user signs up
+  after_create :initialize_cart
 
+  private
+
+  def initialize_cart
+    create_cart!
+  end
 
 end
