@@ -4,5 +4,5 @@ class Review < ApplicationRecord
 
   # --- Validations ---
   validates :rating, presence: true, inclusion: { in: 1..5 }
-  validates :comment, length: { maximum: 500}
+  validates :comment, length: { maximum: 500 }
 end

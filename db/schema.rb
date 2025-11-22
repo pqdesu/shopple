@@ -48,11 +48,21 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_19_134036) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["blocked"], name: "index_favorites_on_blocked"
-    t.index ["favoritable_id", "favoritable_type"], name: "fk_favoritables"
-    t.index ["favoritable_type", "favoritable_id", "favoritor_type", "favoritor_id", "scope"], name: "uniq_favorites__and_favoritables", unique: true
-    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable"
-    t.index ["favoritor_id", "favoritor_type"], name: "fk_favorites"
-    t.index ["favoritor_type", "favoritor_id"], name: "index_favorites_on_favoritor"
+    t.index %w[favoritable_id favoritable_type], name: "fk_favoritables"
+    t.index %w[
+              favoritable_type
+              favoritable_id
+              favoritor_type
+              favoritor_id
+              scope
+            ],
+            name: "uniq_favorites__and_favoritables",
+            unique: true
+    t.index %w[favoritable_type favoritable_id],
+            name: "index_favorites_on_favoritable"
+    t.index %w[favoritor_id favoritor_type], name: "fk_favorites"
+    t.index %w[favoritor_type favoritor_id],
+            name: "index_favorites_on_favoritor"
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
@@ -114,7 +124,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_19_134036) do
     t.string "last_name"
     t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["reset_password_token"],
+            name: "index_users_on_reset_password_token",
+            unique: true
   end
 
   add_foreign_key "cart_items", "carts"
