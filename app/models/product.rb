@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  belongs_to :category
+  has_one_attached :photo
 
   # Associations
   has_many :reviews, dependent: :destroy
