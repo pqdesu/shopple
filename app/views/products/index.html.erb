@@ -4,7 +4,7 @@
 <br>
 <div class="p-3">
   <% @products.each do |product| %>
-    <p><%= product.name %></p>
+    <p><%= link_to product.name, product_path(product) %></p>
     <p><%= product.price %>$</p>
     <p><%= product.category.capitalize %></p>
     <br>
