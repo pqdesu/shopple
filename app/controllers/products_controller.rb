@@ -3,18 +3,15 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @products = Product.all
-    # if params[:category_id].present?
-    #   @category = Category.find(params[:category_id])
-    #   @products = @category.products
-    # else
-    #   @products = Product.all
-    # end
+    # Filter per category logic
+    if params[:category].present?
+      @products = Product.where(category: params[:category])
+    else
+      @products = Product.all
+    end
 
-    # # Optional: Search logic
-    # if params[:query].present?
-    #   @products = @products.where("name ILIKE ?", "%#{params[:query]}%")
-    # end
+    # Get unique category string from Product table
+    @categories = Product.distinct.pluck(:category)
   end
 
   def show

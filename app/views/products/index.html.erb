@@ -1,7 +1,28 @@
 <h1>Testing</h1>
 <p>Testing to see if root became this page</p>
 <p>You can find this file in /home/pedro/code/pqdesu/shopple/app/views/products/index.html.erb</p>
-<% @products.each do |product| %>
-  <p><%= product.name %></p>
-  <p><%= product.price %>$</p>
-<% end %>
+<br>
+<div class="p-3">
+  <% @products.each do |product| %>
+    <p><%= product.name %></p>
+    <p><%= product.price %>$</p>
+    <p><%= product.category.capitalize %></p>
+    <br>
+  <% end %>
+</div>
+<br>
+
+<p>Testing category</p>
+
+<%# Dropdown menu for category %>
+<div class="dropdown p-3">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Category
+  </button>
+  <ul class="dropdown-menu">
+    <% @categories.each do |category| %>
+      <li><%= link_to category.capitalize, products_path(category: category) %></li>
+    <% end %>
+  </ul>
+</div>
+
