@@ -4,16 +4,14 @@
 <br>
 <div class="p-3">
   <% @products.each do |product| %>
-    <p><%= product.name %></p>
+    <p><%= link_to product.name, product_path(product) %></p>
     <p><%= product.price %>$</p>
     <p><%= product.category.capitalize %></p>
     <br>
   <% end %>
 </div>
 <br>
-
 <p>Testing category</p>
-
 <%# Dropdown menu for category %>
 <div class="dropdown p-3">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,4 +23,3 @@
     <% end %>
   </ul>
 </div>
-

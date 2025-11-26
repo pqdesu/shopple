@@ -80,3 +80,4 @@ gem "acts_as_favoritor", "~> 6.0"
 gem "erb_lint", require: false
 gem "prettier_print"
 gem "syntax_tree"
+gem "htmlbeautifier"

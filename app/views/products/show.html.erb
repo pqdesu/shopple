@@ -1,0 +1,9 @@
+<h1>Testing with params for each category</h1>
+<div class="p-5">
+  <p><%= @product.name%></p>
+  <p><%= @product.price %>$</p>
+  <p><%= link_to @product.category.capitalize, products_path(category: @product.category) %></p>
+</div>
+<div>
+  <p><%= @product.name %></p>
+</div>
