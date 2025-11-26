@@ -1,6 +1,4 @@
 class Product < ApplicationRecord
-  has_one_attached :photo
-
   # Associations
   has_many :reviews, dependent: :destroy
   has_many :cart_items, dependent: :destroy
