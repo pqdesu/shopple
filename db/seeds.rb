@@ -17,7 +17,7 @@ puts "Fetching data from FakeStoreAPI..."
 products_data = JSON.parse(URI.open("https://fakestoreapi.com/products").read)
 puts "..."
 
-puts "Creating Categories and Products"
+puts "Creating Products"
 #  Category must exist, Price can't be blank, Price is not a number, Category can't be blank
 products_data.each do |product|
   Product.create!(
