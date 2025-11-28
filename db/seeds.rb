@@ -23,7 +23,8 @@ products_data.each do |product|
   Product.create!(
     name: product["title"],
     category: product["category"],
-    price: product["price"]
+    price: product["price"],
+    image_url: product["image"]
   )
   puts "Created #{product["title"]}"
 end
