@@ -44,4 +44,13 @@ class OrdersController < ApplicationController
       redirect_to cart_path, alert: "Something went wrong with the order."
     end
   end
+
+  def destroy
+    @order = current_user.orders.find(params[:id])
+    if @order.destroy
+      redirect_to orders_path, notice: "Order was successfully deleted"
+    else
+      redirect_to order_path(@order), alert: "Could not delete order"
+    end
+  end
 end
