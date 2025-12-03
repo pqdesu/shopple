@@ -1,0 +1,38 @@
+<h1>Testing to see if its coming to this page</h1>
+<p>/views/orders/show.html.erb</p>
+<h1>Order #<%= @order.id %></h1>
+<p>Status: <span class="badge bg-success"><%= @order.status %></span></p>
+<p>Order Date: <%= @order.created_at.strftime("%B %d, %Y") %></p>
+<h2>Items in this order</h2>
+<% if @order.order_items.empty? %>
+  <p>No items in this order,</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Line Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.order_items.includes(:product).each do |item| %>
+        <tr>
+          <td><%= link_to item.product.name, products_path(item.product) %></td>
+          <td><%= item.quantity %></td>
+          <td><%= number_to_currency(item.price) %></td>
+          <td><%= number_to_currency(item.price * item.quantity) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<h2>Order Total: <%= number_to_currency(@order.total) %></h2>
+<p><%= button_to "Finish your Order", order_path(@order),
+                                      method: :delete,
+                                      data: { turbo_confirm: "Are you sure?" },
+                                      class: "btn btn-danger" %>
+</p>
+<p><%= link_to "Back to Orders", orders_path, class: "btn btn-secondary" %></p>
+<p><%= link_to "Continue Shopping", products_path, class: "btn btn-primary" %></p>
