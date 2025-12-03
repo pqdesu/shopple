@@ -9,9 +9,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active px-2">
-            <%= link_to "Cart", cart_path, class: "nav-link" %>
-          </li>
+          <% unless current_page?(cart_path) %>
+            <li class="nav-item active px-2">
+              <%= link_to "Cart", cart_path, class: "nav-link" %>
+            </li>
+          <% end %>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag ("user/user-avatar.png"), class: "avatar", alt: "dropdown menu" %>
