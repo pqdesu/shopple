@@ -10,7 +10,7 @@ class FavoritesController < ApplicationController
     current_user.favorite(@product)
 
     # Redirect back to the same page user was on
-    redirect_back fallback_location: products_path, notice: "Added to favorites"
+    redirect_to product_path(product), notice: "Added to wishlist!"
   end
 
   def destroy
