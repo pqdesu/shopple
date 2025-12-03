@@ -29,5 +29,10 @@
   </table>
 <% end %>
 <h2>Order Total: <%= number_to_currency(@order.total) %></h2>
+<p><%= button_to "Finish your Order", order_path(@order),
+                                      method: :delete,
+                                      data: { turbo_confirm: "Are you sure?" },
+                                      class: "btn btn-danger" %>
+</p>
 <p><%= link_to "Back to Orders", orders_path, class: "btn btn-secondary" %></p>
 <p><%= link_to "Continue Shopping", products_path, class: "btn btn-primary" %></p>
