@@ -25,7 +25,9 @@ products_data.each do |product|
     category: product["category"],
     price: product["price"],
     image_url: product["image"],
-    description: product["description"]
+    description: product["description"],
+    rating_rate: product.dig("rating", "rate"),
+    rating_count: product.dig("rating", "count")
   )
   puts "Created #{product["title"]}"
 end
