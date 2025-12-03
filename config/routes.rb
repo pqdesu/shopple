@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   end
 
   # View for seeing all favorites at once
-  resources :favorites, only: [:index]
-
+  resources :favorites, only: %i[index create destroy]
   resource :cart, only: [:show]
   resources :cart_items, only: %i[create update destroy]
   resources :orders, only: %i[index show create destroy]
