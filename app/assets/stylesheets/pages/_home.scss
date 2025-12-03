@@ -1,1 +1,10 @@
-// Specific CSS for your home-page
+.product-image {
+  width: 10%;
+  height: 10%;
+  object-fit: cover;
+}
+
+.product-name {
+  text-decoration: none;
+  color: #0e0000;
+}
