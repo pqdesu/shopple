@@ -1,3 +1,15 @@
+<%# Dropdown menu for category %>
+<div class="dropdown p-3">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Category
+  </button>
+  <ul class="dropdown-menu">
+    <li><%= link_to "All", products_path, class: "product-name" %></li>
+    <% @categories.each do |category| %>
+      <li><%= link_to category.capitalize, products_path(category: category), class: "product-name" %></li>
+    <% end %>
+  </ul>
+</div>
 <div class="p-3">
   <% @products.each do |product| %>
     <%= link_to product_path(product), class: "product-name" do %>
@@ -8,18 +20,4 @@
     <p><%= product.category.capitalize %></p>
     <br>
   <% end %>
-</div>
-<br>
-<p>Testing category</p>
-<%# Dropdown menu for category %>
-<div class="dropdown p-3">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Category
-  </button>
-  <ul class="dropdown-menu">
-    <li><%= link_to "All", products_path %></li>
-    <% @categories.each do |category| %>
-      <li><%= link_to category.capitalize, products_path(category: category) %></li>
-    <% end %>
-  </ul>
 </div>
