@@ -1,0 +1,31 @@
+<h1>Find me at views/favorites/index.html.erb</h1>
+<h1>Your Wishlist</h1>
+<% if @favorites.empty? %>
+  <p>Your wishlist is empty</p>
+  <%= link_to "Continue Shopping", products_path, class: "btn btn-primary" %>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @favorites.each do |favorite| %>
+        <tr>
+          <td><%= link_to favorite.name, product_path(favorite), class: "text-decoration-none" %></td>
+          <td><%= number_to_currency(favorite.price) %></td>
+          <td><%= favorite.category.capitalize %></td>
+          <td>
+            <%= button_to "Add to cart", cart_items_path(product_id: favorite.id), method: :post, class: "btn btn-sm btn-primary" %>
+            <%= button_to "Remove", favorite_path(favorite), method: :delete, data: { turbo_confirm: "Remove from wishlist?" }, class: "btn btn-sm btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Continue shopping", products_path, class: "btn btn-secondary" %>
+<% end %>

@@ -17,6 +17,7 @@ class CartItemsController < ApplicationController
     end
 
     if @cart_item.save
+      current_user.unfavorite(@product)
       redirect_to cart_path, notice: "Item added to cart."
     else
       redirect_to product_path(@product), alert: "Could not add item."
