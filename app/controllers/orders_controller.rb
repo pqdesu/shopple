@@ -22,8 +22,7 @@ class OrdersController < ApplicationController
       Order.new(
         user: current_user,
         total: cart.total_price,
-        status: "paid", # Simulating a successful payment
-        shipping_address: "123 Fake St, Tokyo, Japan" # Placeholder
+        status: "processing" # Simulating a successful payment
       )
 
     if order.save
