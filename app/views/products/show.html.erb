@@ -7,6 +7,20 @@
   <p><%= @product.price %>$</p>
   <p><%= @product.rating_rate %></p>
   <p><%= @product.rating_count %></p>
+  <%# Reviews %>
+  <h2>Reviews (<%= @product.reviews.count %>)</h2>
+  <% if @reviews.blank? %>
+    <p>No reviews yet. Be the first to review this product.</p>
+  <% else %>
+    <% @reviews.each do |review| %>
+      <div class="review mb-3 p-2 border rounded">
+        <strong><%= review.user&.first_name %></strong>
+        <span class="text-muted"> — <%= pluralize(review.rating, "star") %></span>
+        <div class="small text-muted"><%= review.created_at.strftime("%b %d, %Y") %></div>
+        <p class="mt-2"><%= simple_format(h(review.comment)) %></p>
+      </div>
+    <% end %>
+  <% end %>
 </div>
 <%# Add to cart button %>
 <div>
