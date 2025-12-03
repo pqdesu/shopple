@@ -10,8 +10,12 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <% unless current_page?(cart_path) %>
-            <li class="nav-item active px-2">
-              <%= link_to "Cart", cart_path, class: "nav-link" %>
+            <li class="nav-item active">
+              <div class="nav-link px-3">
+                <%= link_to cart_path do %>
+                  <i class="fa-solid fa-cart-shopping"></i>
+                <% end %>
+              </div>
             </li>
           <% end %>
           <li class="nav-item dropdown">
@@ -19,8 +23,8 @@
               <%= image_tag ("user/user-avatar.png"), class: "avatar", alt: "dropdown menu" %>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Orders", orders_path, class: "dropdown-item" %>
-              <%= link_to "Wishlist", favorites_path, class: "dropdown-item" %>
+              <%= link_to "- Orders", orders_path, class: "dropdown-item" %>
+              <%= link_to "- Wishlist", favorites_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
