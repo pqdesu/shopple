@@ -5,6 +5,8 @@
   <img src="<%= @product.image_url %>" alt="product image">
   <p><%= @product.description %></p>
   <p><%= @product.price %>$</p>
+  <p><%= @product.rating_rate %></p>
+  <p><%= @product.rating_count %></p>
 </div>
 <div>
   <%= button_to "Add to cart", cart_items_path(product_id: @product.id), method: :post, class: "btn btn-primary" %>
