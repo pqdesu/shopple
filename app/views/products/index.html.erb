@@ -1,29 +1,27 @@
-<div class="d-flex justify-content-between">
-  <%# Current category text %>
-  <div class="mx-5 px-4 pt-5">
-    <div class="col-12 col-md-6 col-lg-4 mb-4">
+<div class="container my-4">
+  <div class="d-flex justify-content-between mb-4">
+    <%# Current category text %>
+    <div class="">
       <% if params[:category].present? %>
-        <h3 class="px-3 category-text"><%= (params[:category]).capitalize %></h3>
+        <h3 class=" category-text"><%= (params[:category]).capitalize %></h3>
       <% else %>
-        <h3 class="px-3 category-text">All Products</h3>
+        <h3 class="category-text">All Products</h3>
       <% end %>
     </div>
+    <%# Dropdown menu for category %>
+    <div class="dropdown">
+      <button class="btn dropdown-toggle secondary-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Category
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to "All", products_path, class: "product-name" %></li>
+        <% @categories.each do |category| %>
+          <li><%= link_to category.capitalize, products_path(category: category), class: "product-name" %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  <%# Dropdown menu for category %>
-  <div class="dropdown mx-5 px-5 pt-5">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Category
-    </button>
-    <ul class="dropdown-menu">
-      <li><%= link_to "All", products_path, class: "product-name" %></li>
-      <% @categories.each do |category| %>
-        <li><%= link_to category.capitalize, products_path(category: category), class: "product-name" %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-<%# Products display %>
-<div class="container my-4">
+  <%# Products display %>
   <div class="row">
     <% @products.each do |product| %>
       <div class="col-12 col-md-6 col-lg-4 mb-4">
