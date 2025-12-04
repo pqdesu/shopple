@@ -11,13 +11,13 @@
       <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Categories
       </button>
-      <ul class="dropdown-menu dropdown-menu-end">
+      <ul class="dropdown-menu dropdown-menu-end p-3">
         <%= link_to products_path, class: "product-name" do %>
-          <li class="secondary-button-list">All</li>
+          <li class="secondary-button-list p-1">All</li>
         <% end %>
         <% @categories.each do |category| %>
           <%= link_to products_path(category: category), class: "product-name" do %>
-            <li class="secondary-button-list"><%= category.capitalize %></li>
+            <li class="secondary-button-list p-1"><%= category.capitalize %></li>
           <% end %>
         <% end %>
       </ul>
