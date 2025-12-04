@@ -68,27 +68,7 @@
 }
 
 .dropdown-menu {
-  border-radius: 8px;
-  padding: 1rem;
-  white-space: nowrap;
   display: block;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all 0.4s ease;
-  visibility: hidden;
-}
-
-.dropdown-menu.show {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown-menu {
   position: absolute;
   top: 100%;
   right: 0;
