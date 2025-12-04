@@ -11,7 +11,7 @@
       <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Categories
       </button>
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu dropdown-menu-end">
         <%= link_to products_path, class: "product-name" do %>
           <li class="secondary-button-list">All</li>
         <% end %>
@@ -29,7 +29,7 @@
       <div class="col-12 col-md-6 col-lg-4 mb-4">
         <%= link_to product_path(product), class: "product-name" do %>
           <div class="card-product p-3 h-100">
-            <img src="<%= product.image_url %>" alt="product image">
+            <%= image_tag product.image_url %>
             <div class="card-product-infos">
               <h2><%= product.name.truncate(45) %></h2>
               <p><%= number_to_currency(product.price) %></p>
