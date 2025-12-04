@@ -14,9 +14,13 @@
         Category
       </button>
       <ul class="dropdown-menu">
-        <li class="secondary-button-list"><%= link_to "All", products_path, class: "product-name" %></li>
+        <%= link_to products_path, class: "product-name" do %>
+          <li class="secondary-button-list">All</li>
+        <% end %>
         <% @categories.each do |category| %>
-          <li class="secondary-button-list"><%= link_to category.capitalize, products_path(category: category), class: "product-name" %></li>
+          <%= link_to products_path(category: category), class: "product-name" do %>
+            <li class="secondary-button-list"><%= category.capitalize %></li>
+          <% end %>
         <% end %>
       </ul>
     </div>
