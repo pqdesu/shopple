@@ -1,27 +1,25 @@
-<h1>Testing with params for each category</h1>
-<div class="p-5">
-  <p><%= link_to @product.category.capitalize, products_path(category: @product.category) %></p>
-  <p><%= @product.name%></p>
+<h1><%= @product.name%></h1>
+<div class="d-flex">
   <img src="<%= @product.image_url %>" alt="product image">
   <p class="red"><%= @product.description %></p>
   <p><%= @product.price %>$</p>
   <p><%= @product.rating_rate %></p>
   <p><%= @product.rating_count %></p>
-  <%# Reviews %>
-  <h2>Reviews (<%= @product.reviews.count %>)</h2>
-  <% if @reviews.blank? %>
-    <p>No reviews yet. Be the first to review this product.</p>
-  <% else %>
-    <% @reviews.each do |review| %>
-      <div class="review mb-3 p-2 border rounded">
-        <strong><%= review.user&.first_name %></strong>
-        <span class="text-muted"> — <%= pluralize(review.rating, "star") %></span>
-        <div class="small text-muted"><%= review.created_at.strftime("%b %d, %Y") %></div>
-        <p class="mt-2"><%= simple_format(h(review.comment)) %></p>
-      </div>
-    <% end %>
-  <% end %>
 </div>
+<%# Reviews %>
+<h2>Reviews (<%= @product.reviews.count %>)</h2>
+<% if @reviews.blank? %>
+  <p>No reviews yet. Be the first to review this product.</p>
+<% else %>
+  <% @reviews.each do |review| %>
+    <div class="review mb-3 p-2 border rounded">
+      <strong><%= review.user&.first_name %></strong>
+      <span class="text-muted"> — <%= pluralize(review.rating, "star") %></span>
+      <div class="small text-muted"><%= review.created_at.strftime("%b %d, %Y") %></div>
+      <p class="mt-2"><%= simple_format(h(review.comment)) %></p>
+    </div>
+  <% end %>
+<% end %>
 <%# Add to cart button %>
 <div>
   <%= button_to "Add to cart", cart_items_path(product_id: @product.id), method: :post, class: "btn btn-primary" %>
