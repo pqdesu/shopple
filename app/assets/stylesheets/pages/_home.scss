@@ -43,17 +43,24 @@
 }
 
 .category-text {
-  white-space: nowrap;
   overflow: hidden;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: white;
 }
 
 .secondary-button {
   background-color: #88bbdd;
   border-radius: 8px;
+  max-height: 2.3rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .secondary-button:hover {
   background-color: #7daaca;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 .secondary-button-list:hover {
