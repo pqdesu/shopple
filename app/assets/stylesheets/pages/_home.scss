@@ -59,12 +59,12 @@
 
 .secondary-button:hover {
   background-color: #7daaca;
-  transform: translateY(-2px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 .secondary-button-list:hover {
   background-color: #7daaca;
+  border-radius: 8px;
 }
 
 .dropdown-menu {
