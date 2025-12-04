@@ -43,7 +43,12 @@
 }
 
 .category-text {
-  min-width: 240px;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.secondary-button {
+  background-color: #b7a0dd;
+  color: #ffffff;
+  border-radius: 8px;
 }
