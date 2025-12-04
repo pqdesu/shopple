@@ -10,6 +10,16 @@
     <% end %>
   </ul>
 </div>
+<%# Current category text %>
+<div class="mx-5 px-4">
+  <div class="col-12 col-md-6 col-lg-4 mb-4">
+    <% if params[:category].present? %>
+      <h3 class="px-3"><%= (params[:category]).capitalize %></h3>
+    <% else %>
+      <h3 class="px-3">All Products</h3>
+    <% end %>
+  </div>
+</div>
 <%# Products display %>
 <div class="container my-4">
   <div class="row">
