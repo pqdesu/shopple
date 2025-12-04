@@ -10,14 +10,22 @@
     <% end %>
   </ul>
 </div>
-<div class="p-3">
-  <% @products.each do |product| %>
-    <%= link_to product_path(product), class: "product-name" do %>
-      <img src="<%= product.image_url %>" alt="product image" class="product-image">
-      <%= product.name %>
+<%# Products display %>
+<div class="container my-4">
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <%= link_to product_path(product), class: "product-name" do %>
+          <div class="card-product p-3 h-100">
+            <img src="<%= product.image_url %>" alt="product image">
+            <div class="card-product-infos">
+              <h2><%= product.name.truncate(45) %></h2>
+              <p><%= number_to_currency(product.price) %></p>
+              <p><%= product.category.capitalize %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% end %>
-    <p><%= product.price %>$</p>
-    <p><%= product.category.capitalize %></p>
-    <br>
-  <% end %>
+  </div>
 </div>
