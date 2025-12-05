@@ -1,10 +1,9 @@
 <h1><%= @product.name%></h1>
-<div class="d-flex">
-  <img src="<%= @product.image_url %>" alt="product image">
-  <p class="red"><%= @product.description %></p>
+<div class="d-flex product-info">
+  <%= image_tag @product.image_url %>
+  <p class="red"><%= @product.description.first.capitalize %><%= @product.description.to_s[1..-1]%></p>
   <p><%= @product.price %>$</p>
-  <p><%= @product.rating_rate %></p>
-  <p><%= @product.rating_count %></p>
+  <p><%= @product.rating_rate %>(<%= @product.rating_count %>)</p>
 </div>
 <%# Reviews %>
 <h2>Reviews (<%= @product.reviews.count %>)</h2>
