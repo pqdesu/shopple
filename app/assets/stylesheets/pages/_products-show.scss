@@ -1,3 +1,10 @@
-.red {
-  color: red;
+.product-info {
+  background-color: #f5f5f5;
+}
+
+.product-info img {
+  max-height: 350px;
+  max-width: 350px;
+  object-fit: contain;
+  padding: 10px;
 }
