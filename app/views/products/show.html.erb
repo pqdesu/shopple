@@ -1,9 +1,9 @@
 <div class="d-flex flex-column flex-md-row gap-5 product-info">
   <%# Product Image %>
-  <%= image_tag @product.image_url, class: "img-fluid mb-3 mb-md-0 align-self-center align-self-md-start" %>
+  <%= image_tag @product.image_url, class: "img-fluid my-3 mb-md-0 align-self-center align-self-md-start" %>
   <%# Product Name %>
-  <div class="d-flex flex-column">
-    <h1><%= @product.name%></h1>
+  <div class="d-flex flex-column mx-2">
+    <h1 class="mb-3 product-name"><%= @product.name%></h1>
     <%# Description %>
     <p class="red">
       <%= @product.description.first.capitalize %><%= @product.description.to_s[1..-1]%>
