@@ -1,12 +1,16 @@
+<%# Product Name %>
 <h1><%= @product.name%></h1>
 <div class="d-flex product-info">
   <%= image_tag @product.image_url %>
+  <%# Description %>
   <div class="d-flex flex-column">
     <p class="red">
       <%= @product.description.first.capitalize %><%= @product.description.to_s[1..-1]%>
     </p>
+    <%# Price %>
     <p><%= number_to_currency(@product.price) %></p>
     <p>
+      <%# Rating %>
       <%= @product.rating_rate %>(<%= @product.rating_count %>)
     </p>
   </div>
