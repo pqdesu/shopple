@@ -1,6 +1,6 @@
-<div class="d-flex product-info">
+<div class="d-flex flex-column flex-md-row gap-5 product-info">
   <%# Product Image %>
-  <%= image_tag @product.image_url %>
+  <%= image_tag @product.image_url, class: "img-fluid mb-3 mb-md-0" %>
   <%# Product Name %>
   <div class="d-flex flex-column">
     <h1><%= @product.name%></h1>
