@@ -1,9 +1,10 @@
-<%# Product Name %>
-<h1><%= @product.name%></h1>
 <div class="d-flex product-info">
+  <%# Product Image %>
   <%= image_tag @product.image_url %>
-  <%# Description %>
+  <%# Product Name %>
   <div class="d-flex flex-column">
+    <h1><%= @product.name%></h1>
+    <%# Description %>
     <p class="red">
       <%= @product.description.first.capitalize %><%= @product.description.to_s[1..-1]%>
     </p>
