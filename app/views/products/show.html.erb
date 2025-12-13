@@ -10,9 +10,17 @@
     <p class="">
       <%= @product.description.first.capitalize %><%= @product.description.to_s[1..-1]%>
     </p>
-    <div class="d-flex justify-content-end">
-      <%# Price %>
-      <p class=""><%= number_to_currency(@product.price) %></p>
+    <%# Price %>
+    <h2 class="">
+      <%= number_to_currency(@product.price) %>
+    </h2>
+    <%# Add to cart button %>
+    <div>
+      <%= button_to "Add to cart", cart_items_path(product_id: @product.id), method: :post, class: "btn btn-primary" %>
+    </div>
+    <%# Add to favorties button %>
+    <div>
+      <%= button_to "Add to wishlist", favorites_path(product_id: @product.id), method: :post, class: "btn btn-secondary" %>
     </div>
   </div>
 </div>
@@ -36,15 +44,3 @@
     </div>
   <% end %>
 <% end %>
-<%# Add to cart button %>
-<div>
-  <%= button_to "Add to cart", cart_items_path(product_id: @product.id), method: :post, class: "btn btn-primary" %>
-</div>
-<%# Add to favorties button %>
-<div>
-  <%= button_to "Add to wishlist", favorites_path(product_id: @product.id), method: :post, class: "btn btn-secondary" %>
-</div>
-<%# View cart button %>
-<div class="p-5">
-  <%= link_to "View Cart", cart_path%>
-</div>
