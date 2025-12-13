@@ -15,11 +15,10 @@
       <%= number_to_currency(@product.price) %>
     </h2>
     <%# Add to cart button %>
-    <%= button_to "Add to cart", cart_items_path(product_id: @product.id), method: :post, class: "btn add-to-cart-button" %>
+    <%= button_to "Add to cart", cart_items_path(product_id: @product.id), method: :post, class: "btn add-to-cart-button w-100" %>
     <%# Add to favorties button %>
-    <%= button_to "Add to wishlist", favorites_path(product_id: @product.id), method: :post, class: "btn btn-primary add-to-wishlist-button" %>
+    <%= button_to "Add to wishlist", favorites_path(product_id: @product.id), method: :post, class: "btn btn-primary add-to-wishlist-button w-100" %>
   </div>
-</div>
 </div>
 <div class="d-flex justify-content-between">
   <%# Reviews %>
