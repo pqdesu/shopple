@@ -28,7 +28,7 @@
 </div>
 <div class="d-flex justify-content-between">
   <%# Reviews %>
-  <h2>Reviews (<%= @product.reviews.count %>)</h2>
+  <h4>Reviews (<%= @product.reviews.count %>)</h4>
   <%# Rating %>
   <p class="">
     <%= @product.rating_rate %>(<%= @product.rating_count %>)
@@ -38,7 +38,7 @@
   <p>No reviews yet. Be the first to review this product.</p>
 <% else %>
   <% @reviews.each do |review| %>
-    <div class="review mb-3 p-2 border rounded">
+    <div class="review mb-3 p-2">
       <strong><%= review.user&.first_name %></strong>
       <span class="text-muted"> — <%= pluralize(review.rating, "star") %></span>
       <div class="small text-muted"><%= review.created_at.strftime("%b %d, %Y") %></div>
