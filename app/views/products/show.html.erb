@@ -1,6 +1,8 @@
 <div class="d-flex flex-column flex-md-row gap-5 product-info">
   <%# Product Image %>
-  <%= image_tag @product.image_url, class: "img-fluid my-3 mb-md-0 align-self-center align-self-md-start" %>
+  <div class="product-image p-4 align-self-center d-flex align-items-center justify-content-center">
+    <%= image_tag @product.image_url %>
+  </div>
   <%# Product Name %>
   <div class="d-flex flex-column mx-2 align-items-md-start">
     <h1 class="mb-3 product-name">
@@ -30,6 +32,7 @@
   <%# Reviews %>
   <h4>Reviews (<%= @product.reviews.count %>)</h4>
   <%# Rating %>
+  <%# TODO: Make rating be stars like PetSpot %>
   <p class="">
     <%= @product.rating_rate %>(<%= @product.rating_count %>)
   </p>
