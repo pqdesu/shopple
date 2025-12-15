@@ -47,8 +47,8 @@
   <% @reviews.each do |review| %>
     <div class="review mb-3 p-2">
       <strong><%= review.user&.first_name %></strong>
-      <span class="text-muted"><%= time_ago_in_words(review.created_at) %> ago</span>
-      <div class="text-muted"><%= pluralize(review.rating, "star") %></div>
+      <span class="text-secondary"><%= time_ago_in_words(review.created_at) %> ago</span>
+      <div class="text-secondary"><%= pluralize(review.rating, "star") %></div>
       <p class="mt-2"><%= simple_format(h(review.comment)) %></p>
     </div>
   <% end %>
