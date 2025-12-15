@@ -8,6 +8,10 @@
     <h1 class="mb-3 product-name">
       <%= @product.name%>
     </h1>
+    <%# Rating %>
+    <p class="">
+      <%= @product.rating_rate %>/5
+    </p>
     <%# Price %>
     <h2 class="">
       <%= number_to_currency(@product.price) %>
