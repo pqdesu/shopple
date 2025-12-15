@@ -8,14 +8,14 @@
     <h1 class="mb-3 product-name">
       <%= @product.name%>
     </h1>
-    <%# Description %>
-    <p class="">
-      <%= @product.description.first.capitalize %><%= @product.description.to_s[1..-1]%>
-    </p>
     <%# Price %>
     <h2 class="">
       <%= number_to_currency(@product.price) %>
     </h2>
+    <%# Description %>
+    <p class="">
+      <%= @product.description.first.capitalize %><%= @product.description.to_s[1..-1]%>
+    </p>
     <div class="d-flex flex-column flex-md-row gap-2 w-100 w-lg-50">
       <%# Add to cart button %>
       <%= button_to "Add to cart", cart_items_path(product_id: @product.id),
