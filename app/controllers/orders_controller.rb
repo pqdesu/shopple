@@ -32,7 +32,8 @@ class OrdersController < ApplicationController
           order: order,
           product: item.product,
           quantity: item.quantity,
-          price: item.product.price # Lock in the price at purchase time
+          price: item.product.price, # Lock in the price at purchase time
+          size: item.size
         )
       end
 
