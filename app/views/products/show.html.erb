@@ -21,7 +21,7 @@
       <%= @product.description.first.capitalize %><%= @product.description.to_s[1..-1]%>
     </p>
     <%# TODO: Make size selectable if's clothing, not the backpack in men's clothing %>
-    <% unless ["jewelery", "electronics"].include?(@product.category) %>
+    <% if ["men's clothing", "women's clothing"].include?(@product.category) && @product.name != "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" %>
       <div class="">
         <button class="">S</button>
         <button class="">M</button>
