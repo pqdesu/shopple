@@ -17,10 +17,11 @@
       <%= number_to_currency(@product.price) %>
     </h2>
     <%# Description %>
-    <p class="text-secondary">
+    <p class="text-secondary mb-0">
       <%= @product.description.first.capitalize %><%= @product.description.to_s[1..-1]%>
     </p>
-    <%# TODO: Make size selectable if's clothing, not the backpack in men's clothing %>
+    <%# Divider-line %>
+    <div class="divider-line"></div>
     <% if ["men's clothing", "women's clothing"].include?(@product.category) && @product.name != "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" %>
       <div id="size-buttons" class="size-buttons mb-3" data-controller="product">
         <p class="text-secondary mb-1">Choose size:</p>
@@ -51,27 +52,27 @@
       class: "btn btn-primary add-to-wishlist-button w-100 w-md-25 mb-3" %>
     </div>
   </div>
-</div>
-<%# Divider-line %>
-<div class="divider-line"></div>
-<%# Reviews %>
-<div class="px-4 reviews">
-  <h5>
-    <strong>All Reviews</strong>
-    <span class="text-secondary review-count">(<%= @product.reviews.count %>)</span>
-  </h5>
-  <% if @reviews.blank? %>
-    <p>No reviews yet. Be the first to review this product.</p>
-  <% else %>
-    <% @reviews.each do |review| %>
-      <div class="review-box mt-3 mb-4 p-3">
-        <strong><%= review.user&.first_name %></strong>
-        <span class="text-secondary small"><%= time_ago_in_words(review.created_at) %> ago</span>
-        <div class="star-rating d-flex mb-1 mt-3">
-          <%= star_rating(review.rating) %>
+  <%# Divider-line %>
+  <div class="divider-line"></div>
+  <%# Reviews %>
+  <div class="reviews">
+    <h5>
+      <strong>All Reviews</strong>
+      <span class="text-secondary review-count">(<%= @product.reviews.count %>)</span>
+    </h5>
+    <% if @reviews.blank? %>
+      <p>No reviews yet. Be the first to review this product.</p>
+    <% else %>
+      <% @reviews.each do |review| %>
+        <div class="review-box mt-3 mb-4 p-3">
+          <strong><%= review.user&.first_name %></strong>
+          <span class="text-secondary small"><%= time_ago_in_words(review.created_at) %> ago</span>
+          <div class="star-rating d-flex mb-1 mt-3">
+            <%= star_rating(review.rating) %>
+          </div>
+          <%= simple_format(h(review.comment)) %>
         </div>
-        <%= simple_format(h(review.comment)) %>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
