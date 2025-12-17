@@ -23,10 +23,10 @@
     <%# TODO: Make size selectable if's clothing, not the backpack in men's clothing %>
     <% if ["men's clothing", "women's clothing"].include?(@product.category) && @product.name != "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" %>
       <div id="size-buttons" class="size-buttons" data-controller="product">
-        <button id="size-btn" class="btn size-btn select">S</button>
-        <button id="size-btn" class="btn size-btn select">M</button>
-        <button id="size-btn" class="btn size-btn select">L</button>
-        <button id="size-btn" class="btn size-btn select">XL</button>
+        <button class="btn size-btn select">S</button>
+        <button class="btn size-btn select">M</button>
+        <button class="btn size-btn select">L</button>
+        <button class="btn size-btn select">XL</button>
       </div>
     <% end %>
     <%# TODO: Make a quantity selector %>
