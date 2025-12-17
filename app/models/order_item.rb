@@ -5,5 +5,4 @@ class OrderItem < ApplicationRecord
   # --- Validations ---
   validates :quantity, presence: true, numericality: { greater_than: 0 }
   validates :price, presence: true
-  validates :size, presence: true
 end
