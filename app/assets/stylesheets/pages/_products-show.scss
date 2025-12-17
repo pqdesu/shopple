@@ -67,10 +67,15 @@
 }
 
 // Review
-.review {
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  margin: 16px;
+.review-box {
+  border: #cacaca;
+  border-style: solid;
+  border-radius: 20px;
+  border-width: 0.1rem;
+}
+
+.review-count {
+  font-size: 0.9rem;
 }
 
 // Rating
