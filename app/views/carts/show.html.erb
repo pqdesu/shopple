@@ -7,9 +7,10 @@
     <thead>
       <tr>
         <th>Product</th>
+        <th>Size</th>
         <th>Unit price</th>
         <th>Quantity</th>
-        <th>Total price by </th>
+        <th>Total price</th>
         <th></th>
       </tr>
     </thead>
@@ -17,6 +18,7 @@
       <% @cart.cart_items.includes(:product).each do |item| %>
         <tr>
           <td><%= link_to item.product.name, product_path(item.product) %></td>
+          <td><%= item.size || "N/A" %></td>
           <td><%= number_to_currency(item.product.price) %></td>
           <td>
             <%= form_with model: item, url: cart_item_path(item), method: :patch, local: true do |f| %>

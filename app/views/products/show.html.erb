@@ -23,19 +23,27 @@
     <%# TODO: Make size selectable if's clothing, not the backpack in men's clothing %>
     <% if ["men's clothing", "women's clothing"].include?(@product.category) && @product.name != "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" %>
       <div id="size-buttons" class="size-buttons" data-controller="product">
-        <button class="btn size-btn unselected">S</button>
-        <button class="btn size-btn unselected">M</button>
-        <button class="btn size-btn unselected">L</button>
-        <button class="btn size-btn unselected">XL</button>
+        <button type="button" class="btn size-btn unselected" data-size="S">S</button>
+        <button type="button" class="btn size-btn unselected" data-size="M">M</button>
+        <button type="button" class="btn size-btn unselected" data-size="L">L</button>
+        <button type="button" class="btn size-btn unselected" data-size="XL">XL</button>
       </div>
     <% end %>
     <%# TODO: Make a quantity selector %>
     <%# Buttons %>
     <div class="d-flex flex-column flex-md-row gap-2 w-100 w-lg-50">
-      <%# Add to cart button %>
-      <%= button_to "Add to cart", cart_items_path(product_id: @product.id),
-      method: :post,
-      class: "btn add-to-cart-button w-100 w-md-25" %>
+      <%# Add to cart form %>
+      <% if ["men's clothing", "women's clothing"].include?(@product.category) && @product.name != "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" %>
+        <%= form_with url: cart_items_path, method: :post, local: true do |f| %>
+          <%= f.hidden_field :product_id, value: @product.id %>
+          <%= f.hidden_field :size, id: 'selected-size' %>
+          <%= f.submit "Add to cart", class: "btn add-to-cart-button w-100 w-md-25" %>
+        <% end %>
+      <% else %>
+        <%= button_to "Add to cart", cart_items_path(product_id: @product.id),
+        method: :post,
+        class: "btn add-to-cart-button w-100 w-md-25" %>
+      <% end %>
       <%# Add to favorties button %>
       <%= button_to "Add to wishlist", favorites_path(product_id: @product.id),
       method: :post,

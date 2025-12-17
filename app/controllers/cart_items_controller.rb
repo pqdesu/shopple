@@ -6,14 +6,20 @@ class CartItemsController < ApplicationController
     @cart = current_user.cart || current_user.create_cart
 
     # Check if item is already in cart
-    @cart_item = @cart.cart_items.find_by(product: @product)
+    @cart_item =
+      @cart.cart_items.find_by(product: @product, size: params[:size].presence)
 
     if @cart_item
       # If yes, increment quantity
       @cart_item.increment!(:quantity)
     else
       # If no, create new item
-      @cart_item = @cart.cart_items.new(product: @product, quantity: 1)
+      @cart_item =
+        @cart.cart_items.new(
+          product: @product,
+          quantity: 1,
+          size: params[:size]
+        )
     end
 
     if @cart_item.save
