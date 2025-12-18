@@ -4,23 +4,31 @@ class CartItemsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     @cart = current_user.cart || current_user.create_cart
+    quantity = params[:quantity]&.to_i || 1
 
     # Check if item is already in cart
-    @cart_item = @cart.cart_items.find_by(product: @product)
+    @cart_item =
+      @cart.cart_items.find_by(product: @product, size: params[:size].presence)
 
     if @cart_item
       # If yes, increment quantity
-      @cart_item.increment!(:quantity)
+      @cart_item.increment!(:quantity, quantity)
     else
       # If no, create new item
-      @cart_item = @cart.cart_items.new(product: @product, quantity: 1)
+      @cart_item =
+        @cart.cart_items.new(
+          product: @product,
+          quantity: quantity,
+          size: params[:size]
+        )
     end
 
     if @cart_item.save
       current_user.unfavorite(@product)
       redirect_to cart_path, notice: "Item added to cart."
     else
-      redirect_to product_path(@product), alert: "Could not add item."
+      redirect_to product_path(@product),
+                  alert: @cart_item.errors.full_messages.join(", ")
     end
   end
 
@@ -42,6 +50,6 @@ class CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:quantity)
+    params.require(:cart_item).permit(:quantity, :size)
   end
 end

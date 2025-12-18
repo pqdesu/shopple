@@ -1,36 +1,109 @@
-<h1>Testing with params for each category</h1>
-<div class="p-5">
-  <p><%= link_to @product.category.capitalize, products_path(category: @product.category) %></p>
-  <p><%= @product.name%></p>
-  <img src="<%= @product.image_url %>" alt="product image">
-  <p><%= @product.description %></p>
-  <p><%= @product.price %>$</p>
-  <p><%= @product.rating_rate %></p>
-  <p><%= @product.rating_count %></p>
-  <%# Reviews %>
-  <h2>Reviews (<%= @product.reviews.count %>)</h2>
-  <% if @reviews.blank? %>
-    <p>No reviews yet. Be the first to review this product.</p>
-  <% else %>
-    <% @reviews.each do |review| %>
-      <div class="review mb-3 p-2 border rounded">
-        <strong><%= review.user&.first_name %></strong>
-        <span class="text-muted"> — <%= pluralize(review.rating, "star") %></span>
-        <div class="small text-muted"><%= review.created_at.strftime("%b %d, %Y") %></div>
-        <p class="mt-2"><%= simple_format(h(review.comment)) %></p>
-      </div>
+<div class="d-flex flex-column flex-md-row product-info px-4 mt-4 gap-4">
+  <%# Product Image %>
+  <div class="product-image mx-auto p-4 mb-3 d-flex flex-column align-items-center justify-content-center flex-shrink-0" data-controller="scroll">
+    <%= image_tag @product.image_url %>
+    <%# Add to favorties button %>
+    <% if current_user&.favorited?(@product) %>
+      <% favorite = Favorite.find_by(favoritor: current_user, favoritable: @product) %>
+      <%= button_to favorite_path(favorite), method: :delete, data: { turbo_confirm: "Remove from wishlist?" }, class: "btn add-to-wishlist-button" do %>
+        <i class="fa-solid fa-heart red-heart"></i>
+      <% end %>
+    <% else %>
+      <%= button_to favorites_path(product_id: @product.id),
+      method: :post,
+      class: "btn add-to-wishlist-button" do %>
+        <i class="fa-regular fa-heart"></i>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
-<%# Add to cart button %>
-<div>
-  <%= button_to "Add to cart", cart_items_path(product_id: @product.id), method: :post, class: "btn btn-primary" %>
-</div>
-<%# Add to favorties button %>
-<div>
-  <%= button_to "Add to wishlist", favorites_path(product_id: @product.id), method: :post, class: "btn btn-secondary" %>
-</div>
-<%# View cart button %>
-<div class="p-5">
-  <%= link_to "View Cart", cart_path%>
-</div>
+  </div>
+  <%# Product Details Column %>
+  <div class="d-flex flex-column flex-grow-1">
+    <%# Product Name, Price, Description %>
+    <div class="d-flex flex-column mx-2 align-items-md-start">
+      <h1 class="mb-3 product-name">
+        <%= @product.name%>
+      </h1>
+      <%# Rating %>
+      <div class="star-rating">
+        <%= star_rating(@product.rating_rate) %>
+        <span class="ms-1"><%= @product.rating_rate %>/5</span>
+      </div>
+      <%# Price %>
+      <h2 class="my-3">
+        <strong><%= number_to_currency(@product.price) %></strong>
+      </h2>
+      <%# Description %>
+      <p class="text-secondary mb-1">
+        <%= @product.description.first.capitalize %><%= @product.description.to_s[1..-1]%>
+      </p>
+    </div>
+    <%# Size, Cart, Reviews Column %>
+    <div class="d-flex flex-column">
+      <% if ["men's clothing", "women's clothing"].include?(@product.category) && @product.name != "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" %>
+        <%# Divider-line %>
+        <div class="divider-line"></div>
+        <div id="size-buttons" class="size-buttons mb-1" data-controller="size">
+          <p class="text-secondary mb-1">Choose size:</p>
+          <button type="button" class="size-btn unselected" data-size="S">Small</button>
+          <button type="button" class="size-btn unselected" data-size="M">Medium</button>
+          <button type="button" class="size-btn unselected" data-size="L">Large</button>
+          <button type="button" class="size-btn unselected" data-size="XL">Extra Large</button>
+        </div>
+      <% end %>
+      <%# Divider-line %>
+      <div class="divider-line"></div>
+      <%# Quantity Selector %>
+      <div class="d-flex">
+        <div class="d-flex align-items-center me-3 quantity-selector" data-controller="quantity">
+          <button type="button" class="btn quantity-button" data-action="click->quantity#decrease">
+            <i class="fa-solid fa-minus"></i>
+          </button>
+          <input id="quantity" class="form-control text-center quantity-input" value="1" min="1" max="100" style="max-width: 80px;" data-action="change->quantity#updateQuantity" readonly>
+          <button type="button" class="btn quantity-button" data-action="click->quantity#increase">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+        <%# Buttons %>
+        <div class="d-flex flex-column flex-md-row gap-2 w-100 w-lg-50">
+          <%# Add to cart form %>
+          <% if ["men's clothing", "women's clothing"].include?(@product.category) && @product.name != "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" %>
+            <%= form_with url: cart_items_path, method: :post, local: true do |f| %>
+              <%= f.hidden_field :product_id, value: @product.id %>
+              <%= f.hidden_field :size, id: 'selected-size' %>
+              <%= f.hidden_field :quantity, id: 'quantity-input', value: 1 %>
+              <%= f.submit "Add to cart", class: "btn add-to-cart-button w-100 w-md-25" %>
+            <% end %>
+          <% else %>
+            <%= form_with url: cart_items_path, method: :post, local: true do |f| %>
+              <%= f.hidden_field :product_id, value: @product.id %>
+              <%= f.hidden_field :quantity, id: 'quantity-input', value: 1 %>
+              <%= f.submit "Add to cart", class: "btn add-to-cart-button w-100 w-md-25" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <%# Divider-line %>
+      <div class="divider-line"></div>
+      <%# Reviews %>
+      <div class="reviews">
+        <h5>
+          <strong>All Reviews</strong>
+          <span class="text-secondary review-count">(<%= @product.reviews.count %>)</span>
+        </h5>
+        <% if @reviews.blank? %>
+          <p>No reviews yet. Be the first to review this product.</p>
+        <% else %>
+          <% @reviews.each do |review| %>
+            <div class="review-box mt-3 mb-4 p-3">
+              <strong><%= review.user&.first_name %></strong>
+              <span class="text-secondary small"><%= time_ago_in_words(review.created_at) %> ago</span>
+              <div class="star-rating d-flex mb-1 mt-3">
+                <%= star_rating(review.rating) %>
+              </div>
+              <%= simple_format(h(review.comment)) %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
