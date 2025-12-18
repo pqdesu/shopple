@@ -21,9 +21,9 @@
     <p class="text-secondary mb-0">
       <%= @product.description.first.capitalize %><%= @product.description.to_s[1..-1]%>
     </p>
-    <%# Divider-line %>
-    <div class="divider-line"></div>
     <% if ["men's clothing", "women's clothing"].include?(@product.category) && @product.name != "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" %>
+      <%# Divider-line %>
+      <div class="divider-line"></div>
       <div id="size-buttons" class="size-buttons mb-3" data-controller="product">
         <p class="text-secondary mb-1">Choose size:</p>
         <button type="button" class="btn size-btn unselected" data-size="S">Small</button>
