@@ -4,6 +4,7 @@ class CartItemsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     @cart = current_user.cart || current_user.create_cart
+    quantity = params[:quantity]&.to_i || 1
 
     # Check if item is already in cart
     @cart_item =
@@ -11,13 +12,13 @@ class CartItemsController < ApplicationController
 
     if @cart_item
       # If yes, increment quantity
-      @cart_item.increment!(:quantity)
+      @cart_item.increment!(:quantity, quantity)
     else
       # If no, create new item
       @cart_item =
         @cart.cart_items.new(
           product: @product,
-          quantity: 1,
+          quantity: quantity,
           size: params[:size]
         )
     end
