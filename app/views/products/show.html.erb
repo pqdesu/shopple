@@ -1,7 +1,20 @@
 <div class="d-flex flex-column product-info px-4">
   <%# Product Image %>
-  <div class="product-image p-4 mb-3 align-self-center d-flex align-items-center justify-content-center">
+  <div class="product-image p-4 mb-3 align-self-center d-flex flex-column align-items-center justify-content-center">
     <%= image_tag @product.image_url %>
+    <%# Add to favorties button %>
+    <% if current_user&.favorited?(@product) %>
+      <% favorite = Favorite.find_by(favoritor: current_user, favoritable: @product) %>
+      <%= button_to favorite_path(favorite), method: :delete, data: { turbo_confirm: "Remove from wishlist?" }, class: "btn add-to-wishlist-button mb-3" do %>
+        <i class="fa-solid fa-heart"></i>
+      <% end %>
+    <% else %>
+      <%= button_to favorites_path(product_id: @product.id),
+      method: :post,
+      class: "btn add-to-wishlist-button" do %>
+        <i class="fa-regular fa-heart"></i>
+      <% end %>
+    <% end %>
   </div>
   <%# Product Name %>
   <div class="d-flex flex-column mx-2 align-items-md-start">
@@ -49,10 +62,6 @@
         method: :post,
         class: "btn add-to-cart-button w-100 w-md-25" %>
       <% end %>
-      <%# Add to favorties button %>
-      <%= button_to "Add to wishlist", favorites_path(product_id: @product.id),
-      method: :post,
-      class: "btn btn-primary add-to-wishlist-button w-100 w-md-25 mb-3" %>
     </div>
   </div>
   <%# Divider-line %>
