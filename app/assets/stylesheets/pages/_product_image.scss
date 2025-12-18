@@ -16,3 +16,11 @@
   padding: auto;
   object-fit: contain;
 }
+
+@media (min-width: 768px) {
+  .product-image {
+    position: sticky;
+    top: 2rem;
+    align-self: flex-start;
+  }
+}
