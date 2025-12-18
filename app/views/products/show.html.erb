@@ -55,11 +55,11 @@
       <%# Quantity Selector %>
       <div class="d-flex">
         <div class="d-flex align-items-center me-3 quantity-selector" data-controller="quantity">
-          <button type="button" class="btn btn-outline-secondary btn-sm" data-action="click->quantity#decrease">
+          <button type="button" class="btn quantity-button" data-action="click->quantity#decrease">
             <i class="fa-solid fa-minus"></i>
           </button>
-          <input type="number" id="quantity" class="form-control text-center" value="1" min="1" max="100" style="max-width: 80px;" data-action="change->quantity#updateQuantity" readonly>
-          <button type="button" class="btn btn-outline-secondary btn-sm" data-action="click->quantity#increase">
+          <input id="quantity" class="form-control text-center quantity-input" value="1" min="1" max="100" style="max-width: 80px;" data-action="change->quantity#updateQuantity" readonly>
+          <button type="button" class="btn quantity-button" data-action="click->quantity#increase">
             <i class="fa-solid fa-plus"></i>
           </button>
         </div>
