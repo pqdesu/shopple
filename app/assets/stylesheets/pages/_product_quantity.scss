@@ -8,6 +8,7 @@ input#quantity::-webkit-inner-spin-button {
 
 /* Remove arrows in Firefox */
 input#quantity[type="number"] {
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 
