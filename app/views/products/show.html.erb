@@ -6,7 +6,7 @@
     <% if current_user&.favorited?(@product) %>
       <% favorite = Favorite.find_by(favoritor: current_user, favoritable: @product) %>
       <%= button_to favorite_path(favorite), method: :delete, data: { turbo_confirm: "Remove from wishlist?" }, class: "btn add-to-wishlist-button" do %>
-        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart red-heart"></i>
       <% end %>
     <% else %>
       <%= button_to favorites_path(product_id: @product.id),
