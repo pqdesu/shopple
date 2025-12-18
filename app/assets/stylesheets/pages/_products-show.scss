@@ -33,20 +33,29 @@
 // Size buttons
 .size-btn {
   border-radius: 20px;
-}
-
-.size-btn:hover {
-  background-color: #6f99b6;
+  border: none;
+  padding: 0.3rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin: 0.2rem;
 }
 
 .unselected {
-  background-color: #88bbdd;
+  color: #1d1d1d;
+  background-color: #a8dadc;
+  cursor: pointer;
+  // transition: all 0.3s;
+  // box-shadow:
+  //   6px 6px 12px #c5c5c5,
+  //   -6px -6px 12px #ffffff;
 }
 
 .selected {
-  background-color: #6f99b6;
-  border: #000000;
-  border-style: dashed;
+  color: #ffffff;
+  background-color: #457b9d;
+  // box-shadow:
+  //   inset 4px 4px 12px #c5c5c5,
+  //   inset -4px -4px 12px #ffffff;
 }
 
 // Add to cart button
