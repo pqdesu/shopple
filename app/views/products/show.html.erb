@@ -1,6 +1,6 @@
-<div class="d-flex flex-column flex-md-row gap-4 product-info px-4">
+<div class="d-flex flex-column product-info px-4">
   <%# Product Image %>
-  <div class="product-image p-4 align-self-center d-flex align-items-center justify-content-center">
+  <div class="product-image p-4 mb-3 align-self-center d-flex align-items-center justify-content-center">
     <%= image_tag @product.image_url %>
   </div>
   <%# Product Name %>
@@ -10,11 +10,12 @@
     </h1>
     <%# Rating %>
     <div class="star-rating">
-      <%= star_rating(@product.rating_rate) %><%= @product.rating_rate %>/5
+      <%= star_rating(@product.rating_rate) %>
+      <span class="ms-1"><%= @product.rating_rate %>/5</span>
     </div>
     <%# Price %>
-    <h2 class="my-2">
-      <%= number_to_currency(@product.price) %>
+    <h2 class="my-3">
+      <strong><%= number_to_currency(@product.price) %></strong>
     </h2>
     <%# Description %>
     <p class="text-secondary mb-0">
@@ -31,6 +32,8 @@
         <button type="button" class="btn size-btn unselected" data-size="XL">Extra Large</button>
       </div>
     <% end %>
+    <%# Divider-line %>
+    <div class="divider-line"></div>
     <%# TODO: Make a quantity selector %>
     <%# Buttons %>
     <div class="d-flex flex-column flex-md-row gap-2 w-100 w-lg-50">
