@@ -1,0 +1,41 @@
+// Rating
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star-rating i {
+  color: #ffc107;
+}
+
+.star-rating .far {
+  color: #e0e0e0;
+}
+
+.star-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+}
+
+.star-empty {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.star-filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.star-wrapper i {
+  display: block;
+  margin: 0;
+}

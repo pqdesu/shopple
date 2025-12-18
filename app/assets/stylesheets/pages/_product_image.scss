@@ -1,0 +1,18 @@
+// Image
+.product-image {
+  background-color: #ececec;
+  border-radius: 12px;
+  min-width: 23rem;
+  min-height: 20rem;
+  max-width: 23rem;
+  max-height: 20rem;
+  position: relative;
+}
+
+.product-image img {
+  max-height: 18rem;
+  max-width: 18rem;
+  width: auto;
+  padding: auto;
+  object-fit: contain;
+}
