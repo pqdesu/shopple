@@ -52,29 +52,35 @@
       <% end %>
       <%# Divider-line %>
       <div class="divider-line"></div>
-      <%# TODO: Make a quantity selector %>
       <%# Quantity Selector %>
-      <div class="mb-3" data-controller="quantity">
-        <label for="quantity" class="form-label text-secondary mb-1">Quantity:</label>
-        <input type="number" id="quantity" class="form-control" value="1" min="1" max="100" style="max-width: 100px;" data-action="change->quantity#updateQuantity">
-      </div>
-      <%# Buttons %>
-      <div class="d-flex flex-column flex-md-row gap-2 w-100 w-lg-50">
-        <%# Add to cart form %>
-        <% if ["men's clothing", "women's clothing"].include?(@product.category) && @product.name != "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" %>
-          <%= form_with url: cart_items_path, method: :post, local: true do |f| %>
-            <%= f.hidden_field :product_id, value: @product.id %>
-            <%= f.hidden_field :size, id: 'selected-size' %>
-            <%= f.hidden_field :quantity, id: 'quantity-input', value: 1 %>
-            <%= f.submit "Add to cart", class: "btn add-to-cart-button w-100 w-md-25" %>
+      <div class="d-flex">
+        <div class="d-flex align-items-center me-3 quantity-selector" data-controller="quantity">
+          <button type="button" class="btn btn-outline-secondary btn-sm" data-action="click->quantity#decrease">
+            <i class="fa-solid fa-minus"></i>
+          </button>
+          <input type="number" id="quantity" class="form-control text-center" value="1" min="1" max="100" style="max-width: 80px;" data-action="change->quantity#updateQuantity" readonly>
+          <button type="button" class="btn btn-outline-secondary btn-sm" data-action="click->quantity#increase">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+        <%# Buttons %>
+        <div class="d-flex flex-column flex-md-row gap-2 w-100 w-lg-50">
+          <%# Add to cart form %>
+          <% if ["men's clothing", "women's clothing"].include?(@product.category) && @product.name != "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" %>
+            <%= form_with url: cart_items_path, method: :post, local: true do |f| %>
+              <%= f.hidden_field :product_id, value: @product.id %>
+              <%= f.hidden_field :size, id: 'selected-size' %>
+              <%= f.hidden_field :quantity, id: 'quantity-input', value: 1 %>
+              <%= f.submit "Add to cart", class: "btn add-to-cart-button w-100 w-md-25" %>
+            <% end %>
+          <% else %>
+            <%= form_with url: cart_items_path, method: :post, local: true do |f| %>
+              <%= f.hidden_field :product_id, value: @product.id %>
+              <%= f.hidden_field :quantity, id: 'quantity-input', value: 1 %>
+              <%= f.submit "Add to cart", class: "btn add-to-cart-button w-100 w-md-25" %>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= form_with url: cart_items_path, method: :post, local: true do |f| %>
-            <%= f.hidden_field :product_id, value: @product.id %>
-            <%= f.hidden_field :quantity, id: 'quantity-input', value: 1 %>
-            <%= f.submit "Add to cart", class: "btn add-to-cart-button w-100 w-md-25" %>
-          <% end %>
-        <% end %>
+        </div>
       </div>
       <%# Divider-line %>
       <div class="divider-line"></div>
