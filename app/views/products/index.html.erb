@@ -30,7 +30,9 @@
         <%= link_to product_path(product), class: "products-link" do %>
           <div class="">
             <%# Image %>
-            <%= image_tag product.image_url, class: "products-image" %>
+            <div class="products-image mx-auto d-flex flex-column justify-content-center align-items-center">
+              <%= image_tag product.image_url %>
+            </div>
             <div class="">
               <%# Name %>
               <h2 class="product-name"><%= product.name.truncate(45) %></h2>
