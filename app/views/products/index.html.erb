@@ -27,7 +27,7 @@
   <div class="row">
     <% @products.each do |product| %>
       <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <%= link_to product_path(product), class: "product-name" do %>
+        <%= link_to product_path(product), class: "products-link" do %>
           <div class="">
             <%= image_tag product.image_url, class: "" %>
             <div class="">
