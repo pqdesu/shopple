@@ -29,15 +29,19 @@
       <div class="col-12 col-md-6 col-lg-4 mb-4">
         <%= link_to product_path(product), class: "products-link" do %>
           <div class="">
+            <%# Image %>
             <%= image_tag product.image_url, class: "products-image" %>
             <div class="">
+              <%# Name %>
               <h2 class="product-name"><%= product.name.truncate(45) %></h2>
               <%# Rating %>
               <div class="star-rating">
                 <%= star_rating(product.rating_rate) %>
                 <span class="ms-1"><%= product.rating_rate %>/5</span>
               </div>
+              <%# Price %>
               <p><%= number_to_currency(product.price) %></p>
+              <%# Category %>
               <p><%= product.category.capitalize %></p>
             </div>
           </div>
