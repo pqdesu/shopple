@@ -42,9 +42,7 @@
                 <span class="ms-1"><%= product.rating_rate %>/5</span>
               </div>
               <%# Price %>
-              <p><%= number_to_currency(product.price) %></p>
-              <%# Category %>
-              <p><%= product.category.capitalize %></p>
+              <p class="products-price plus-jakarta-sans-bold"><%= number_to_currency(product.price) %></p>
             </div>
           </div>
         <% end %>
