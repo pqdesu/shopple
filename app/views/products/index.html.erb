@@ -26,18 +26,18 @@
   <%# Products display %>
   <div class="row">
     <% @products.each do |product| %>
-      <div class="col-12 col-md-6 col-lg-4 mb-4 mx-1">
+      <div class="col-12 col-md-6 col-xl-3 mb-4">
         <%= link_to product_path(product), class: "products-link" do %>
           <div class="">
             <%# Image %>
             <div class="products-image mx-auto d-flex flex-column justify-content-center align-items-center">
               <%= image_tag product.image_url %>
             </div>
-            <div class="">
+            <div class="mt-4">
               <%# Name %>
-              <h2 class="product-name"><%= product.name.truncate(45) %></h2>
+              <p class="products-name plus-jakarta-sans-bold mb-3"><%= product.name.truncate(45) %></p>
               <%# Rating %>
-              <div class="star-rating">
+              <div class="star-rating mb-3">
                 <%= star_rating(product.rating_rate) %>
                 <span class="ms-1"><%= product.rating_rate %>/5</span>
               </div>
