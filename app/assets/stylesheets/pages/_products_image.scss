@@ -12,3 +12,17 @@
   max-width: 15rem;
   object-fit: contain;
 }
+
+@media (min-width: 1024px) {
+  .products-image {
+    min-width: 17rem;
+    min-height: 17rem;
+    max-width: 17rem;
+    max-height: 17rem;
+  }
+
+  .products-image img {
+    max-height: 12rem;
+    max-width: 12rem;
+  }
+}

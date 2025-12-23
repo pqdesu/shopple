@@ -1,5 +1,23 @@
+.products-detail {
+  min-width: 20rem;
+  min-height: 35rem;
+  max-width: 20rem;
+  max-height: 35rem;
+  margin: auto;
+}
+
+@media (min-width: 1024px) {
+  .products-detail {
+    min-width: 17rem;
+    min-height: 32rem;
+    max-width: 17rem;
+    max-height: 32rem;
+  }
+}
+
 .products-name {
   font-size: 22px;
+  min-height: 3rem;
 }
 
 .products-price {
