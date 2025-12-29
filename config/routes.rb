@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "products#index"
+  root to: "pages#home"
 
   resources :products, only: %i[index show] do
     # Nesting favorites inside products makes the URL: /products/1/favorites
