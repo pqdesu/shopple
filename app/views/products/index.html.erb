@@ -2,9 +2,9 @@
   <div class="d-flex justify-content-between mb-4">
     <%# Current category text %>
     <% if params[:category].present? %>
-      <h3 class=" category-text p-2"><%= (params[:category]).capitalize %></h3>
+      <h3 class="category-text montserrat-normal p-2"><%= (params[:category]).capitalize %></h3>
     <% else %>
-      <h3 class="category-text p-2">All Products</h3>
+      <h3 class="category-text montserrat-normal p-2">All Products</h3>
     <% end %>
     <%# Dropdown menu for category %>
     <div class="dropdown secondary-button mt-2">
@@ -12,12 +12,12 @@
         Categories
       </button>
       <ul class="dropdown-menu dropdown-menu-end p-3">
-        <%= link_to products_path, class: "product-name" do %>
-          <li class="secondary-button-list p-1">All</li>
+        <%= link_to products_path, class: "products-link" do %>
+          <li class="secondary-button-list mt-3 p-2 mb-3">All</li>
         <% end %>
         <% @categories.each do |category| %>
-          <%= link_to products_path(category: category), class: "product-name" do %>
-            <li class="secondary-button-list p-1"><%= category.capitalize %></li>
+          <%= link_to products_path(category: category), class: "products-link" do %>
+            <li class="secondary-button-list p-2 mb-3"><%= category.capitalize %></li>
           <% end %>
         <% end %>
       </ul>
@@ -26,17 +26,26 @@
   <%# Products display %>
   <div class="row">
     <% @products.each do |product| %>
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <%= link_to product_path(product), class: "product-name" do %>
-          <div class="card-product p-3 h-100">
-            <%= image_tag product.image_url %>
-            <div class="card-product-infos">
-              <h2><%= product.name.truncate(45) %></h2>
-              <p><%= number_to_currency(product.price) %></p>
-              <p><%= product.category.capitalize %></p>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+        <div class="products-detail">
+          <%= link_to product_path(product), class: "products-link" do %>
+            <%# Image %>
+            <div class="products-image mx-auto d-flex flex-column justify-content-center align-items-center">
+              <%= image_tag product.image_url %>
             </div>
+            <%# Name %>
+            <p class="products-name plus-jakarta-sans-bold my-3">
+              <%= product.name.truncate(45) %>
+            </p>
+          <% end %>
+          <%# Rating %>
+          <div class="star-rating mb-3">
+            <%= star_rating(product.rating_rate) %>
+            <span class="ms-1"><%= product.rating_rate %>/5</span>
           </div>
-        <% end %>
+          <%# Price %>
+          <p class="products-price plus-jakarta-sans-bold"><%= number_to_currency(product.price) %></p>
+        </div>
       </div>
     <% end %>
   </div>

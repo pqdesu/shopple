@@ -1,0 +1,42 @@
+.products-image {
+  background-color: $product-bg-gray;
+  border-radius: 12px;
+  min-width: 20rem;
+  min-height: 20rem;
+  max-width: 20rem;
+  max-height: 20rem;
+  transition:
+    transform 0.2s ease-in-out,
+    background-color 0.2s ease;
+  overflow: hidden;
+}
+
+.products-image:hover {
+  background-color: #e2e0df;
+  transform: scale(1.05);
+}
+
+.products-image img {
+  max-height: 15rem;
+  max-width: 15rem;
+  object-fit: contain;
+  transition: transform 0.2s ease-in-out;
+}
+
+.products-image:hover img {
+  transform: scale(1.08);
+}
+
+@media (min-width: 1024px) {
+  .products-image {
+    min-width: 17rem;
+    min-height: 17rem;
+    max-width: 17rem;
+    max-height: 17rem;
+  }
+
+  .products-image img {
+    max-height: 12rem;
+    max-width: 12rem;
+  }
+}
