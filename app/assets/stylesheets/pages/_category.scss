@@ -10,17 +10,26 @@
   background-color: #88bbdd;
   border-radius: 8px;
   max-height: 2.3rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(145deg, #92c8ec, #7aa8c7);
+  box-shadow:
+    5px 5px 15px #d0d0d0,
+    -5px -5px 15px #ffffff;
 }
 
 .secondary-button:hover {
   background-color: #7daaca;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.secondary-button-list {
+  background-color: #88bbdd;
+  border-radius: 8px;
+  box-shadow:
+    5px 5px 15px #749fbc,
+    -5px -5px 15px #9cd7fe;
 }
 
 .secondary-button-list:hover {
   background-color: #7daaca;
-  border-radius: 8px;
 }
 
 .dropdown-menu {
