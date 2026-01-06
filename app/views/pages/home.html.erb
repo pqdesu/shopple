@@ -1,2 +1,27 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container my-3">
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+        <div class="products-detail">
+          <%= link_to product_path(product), class: "products-link" do %>
+            <%# Image %>
+            <div class="products-image mx-auto d-flex flex-column justify-content-center align-items-center">
+              <%= image_tag product.image_url %>
+            </div>
+            <%# Name %>
+            <p class="products-name plus-jakarta-sans-bold my-3">
+              <%= product.name.truncate(45) %>
+            </p>
+          <% end %>
+          <%# Rating %>
+          <div class="star-rating mb-3">
+            <%= star_rating(product.rating_rate) %>
+            <span class="ms-1"><%= product.rating_rate %>/5</span>
+          </div>
+          <%# Price %>
+          <p class="products-price plus-jakarta-sans-bold"><%= number_to_currency(product.price) %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
