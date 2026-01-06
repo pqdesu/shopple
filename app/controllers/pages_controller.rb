@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    @products = Product.all
+    @new_arrivals = Product.order(created_at: :desc).limit(4)
+    @hot_items = Product.order(rating_rate: :desc).limit(4)
   end
 end
