@@ -6,10 +6,10 @@
 <div class="container my-3">
   <%# New Arrivals %>
   <div class="pt-3">
-    <div class="d-flex align-items-center justify-content-center p-3 pb-5">
+    <div class="d-flex align-items-center justify-content-center p-3 py-4">
       <h1 class="montserrat-bold">NEW ARRIVALS</h1>
     </div>
-    <%# Partial of Carousel of New Arrivals %>
+    <%# Carousel of New Arrivals %>
     <%= render partial: 'shared/carousel', locals: { products: @new_arrivals } %>
     <%# Button to All products %>
     <%= render partial: 'shared/all_button' %>
@@ -18,10 +18,10 @@
   <div class="divider-line"></div>
   <%# Hot Items %>
   <div class="pt-3">
-    <div class="d-flex align-items-center justify-content-center p-3 pb-5">
+    <div class="d-flex align-items-center justify-content-center p-3 py-4">
       <h1 class="montserrat-bold">HOT ITEMS</h1>
     </div>
-    <%# Partial of Carousel of Hot Items %>
+    <%# Carousel of Hot Items %>
     <%= render partial: 'shared/carousel', locals: { products: @hot_items } %>
     <%# Button to All products %>
     <%= render partial: 'shared/all_button' %>
