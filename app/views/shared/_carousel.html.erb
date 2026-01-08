@@ -1,0 +1,25 @@
+<div class="products-carousel">
+  <% products.each do |product| %>
+    <div class="carousel-item-container">
+      <div class="products-detail">
+        <%= link_to product_path(product), class: "products-link" do %>
+          <%# Image %>
+          <div class="products-image mx-auto d-flex flex-column justify-content-center align-items-center">
+            <%= image_tag product.image_url %>
+          </div>
+          <%# Name %>
+          <p class="products-name plus-jakarta-sans-bold my-3">
+            <%= product.name.truncate(45) %>
+          </p>
+        <% end %>
+        <%# Rating %>
+        <div class="star-rating mb-3">
+          <%= star_rating(product.rating_rate) %>
+          <span class="ms-1"><%= product.rating_rate %>/5</span>
+        </div>
+        <%# Price %>
+        <p class="products-price plus-jakarta-sans-bold"><%= number_to_currency(product.price) %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
