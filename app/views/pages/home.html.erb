@@ -12,11 +12,7 @@
     <%# Partial of Carousel of New Arrivals %>
     <%= render partial: 'shared/carousel', locals: { products: @new_arrivals } %>
     <%# Button to All products %>
-    <div class="d-flex align-items-center justify-content-center pt-3">
-      <%= link_to products_path, class: "products-link" do %>
-        <button class="all-btn">View All</button>
-      <% end %>
-    </div>
+    <%= render partial: 'shared/all_button' %>
   </div>
   <%# Divider Line %>
   <div class="divider-line"></div>
@@ -28,10 +24,6 @@
     <%# Partial of Carousel of Hot Items %>
     <%= render partial: 'shared/carousel', locals: { products: @hot_items } %>
     <%# Button to All products %>
-    <div class="d-flex align-items-center justify-content-center pt-3">
-      <%= link_to products_path, class: "products-link" do %>
-        <button class="all-btn">View All</button>
-      <% end %>
-    </div>
+    <%= render partial: 'shared/all_button' %>
   </div>
 </div>
