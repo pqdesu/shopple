@@ -5,7 +5,7 @@
     <div class="d-flex align-items-center justify-content-center p-3 pb-5">
       <h1 class="montserrat-bold">NEW ARRIVALS</h1>
     </div>
-    <%# Partial of Carousel %>
+    <%# Partial of Carousel of New Arrivals %>
     <%= render partial: 'shared/carousel', locals: { products: @new_arrivals } %>
     <%# Button to All products %>
     <div class="d-flex align-items-center justify-content-center pt-3">
@@ -21,31 +21,8 @@
     <div class="d-flex align-items-center justify-content-center p-3 pb-5">
       <h1 class="montserrat-bold">HOT ITEMS</h1>
     </div>
-    <div class="products-carousel">
-      <% @hot_items.each do |product| %>
-        <div class="carousel-item-container">
-          <div class="products-detail">
-            <%= link_to product_path(product), class: "products-link" do %>
-              <%# Image %>
-              <div class="products-image mx-auto d-flex flex-column justify-content-center align-items-center">
-                <%= image_tag product.image_url %>
-              </div>
-              <%# Name %>
-              <p class="products-name plus-jakarta-sans-bold my-3">
-                <%= product.name.truncate(45) %>
-              </p>
-            <% end %>
-            <%# Rating %>
-            <div class="star-rating mb-3">
-              <%= star_rating(product.rating_rate) %>
-              <span class="ms-1"><%= product.rating_rate %>/5</span>
-            </div>
-            <%# Price %>
-            <p class="products-price plus-jakarta-sans-bold"><%= number_to_currency(product.price) %></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <%# Partial of Carousel of Hot Items %>
+    <%= render partial: 'shared/carousel', locals: { products: @hot_items } %>
     <%# Button to All products %>
     <div class="d-flex align-items-center justify-content-center pt-3">
       <%= link_to products_path, class: "products-link" do %>
