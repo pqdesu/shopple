@@ -1,8 +1,4 @@
-<div class="banner">
-  <div class="banner-img d-flex justify-content-end">
-    <%= image_tag "home/banner-image.png" %>
-  </div>
-</div>
+<%= render partial: 'shared/banner' %>
 <div class="container my-3">
   <%# New Arrivals %>
   <div class="pt-3">
@@ -12,7 +8,7 @@
     <%# Carousel of New Arrivals %>
     <%= render partial: 'shared/carousel', locals: { products: @new_arrivals } %>
     <%# Button to All products %>
-    <%= render partial: 'shared/all_button' %>
+    <%= render partial: 'shared/all_button', locals: { text: 'View All' }  %>
   </div>
   <%# Divider Line %>
   <div class="divider-line"></div>
@@ -24,6 +20,6 @@
     <%# Carousel of Hot Items %>
     <%= render partial: 'shared/carousel', locals: { products: @hot_items } %>
     <%# Button to All products %>
-    <%= render partial: 'shared/all_button' %>
+    <%= render partial: 'shared/all_button', locals: { text: 'View All' } %>
   </div>
 </div>
