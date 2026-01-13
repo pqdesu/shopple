@@ -1,16 +1,68 @@
 .banner {
-  background-color: gray;
+  background-color: $product-bg-gray;
   height: auto;
   width: auto;
 }
 
-.banner-img img {
-  width: 45%;
-  height: auto;
-  @media (max-width: 768px) {
-    width: 65%;
+.banner-title {
+  font-size: 3rem;
+
+  @media (min-width: 1440px) {
+    font-size: 4rem;
   }
-  @media (max-width: 426px) {
-    width: 100%;
+}
+
+.banner-text {
+  font-size: 0.8rem;
+
+  @media (min-width: 1440px) {
+    font-size: 1rem;
+  }
+}
+
+.banner-text-small {
+  font-size: 0.8rem;
+
+  @media (min-width: 1440px) {
+    font-size: 1rem;
+  }
+}
+
+.banner-number {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0;
+
+  @media (min-width: 1440px) {
+    font-size: 2.5rem;
+  }
+}
+
+.divider-line-vertical {
+  min-height: 100%;
+  width: 1px;
+  background-color: #b6b6b6;
+}
+
+.banner-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  @media (max-width: 768px) {
+    width: 70%;
+  }
+
+  @media (min-width: 1440px) {
+    width: 90%;
   }
 }
