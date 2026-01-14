@@ -3,7 +3,7 @@
 @import "product_show_page";
 @import "cart_button";
 @import "favorite_button";
-@import "product_image";
+@import "product_detail_image";
 @import "product_name";
 @import "quantity_button";
 @import "product_rating";
@@ -18,3 +18,4 @@
 @import "view_all_button";
 @import "carousel";
 @import "banner";
+// TODO: refactor all the scss files for better reading and ease to find
