@@ -1,0 +1,37 @@
+<div class="banner">
+  <div class="d-flex flex-column flex-lg-row justify-content-lg-end align-items-center align-items-lg-stretch">
+    <div class="m-3 m-sm-4 m-lg-5 px-2 px-sm-3 px-lg-0">
+      <%# Banner Title %>
+      <h1 class="montserrat-bold banner-title pt-2">FIND ITEMS THAT SUIT YOUR NEEDS</h1>
+      <%# Banner Text %>
+      <div class="pt-2 pe-xl-5 me-xl-5">
+        <p class="text-secondary banner-text">Browse through our diverse range of meticulously selected items, designed to bring out your individuality and cater to your lifestyle.</p>
+      </div>
+      <%# All products Button %>
+      <div class="d-flex justify-content-center justify-content-lg-start ">
+        <%= render partial: 'shared/all_button', locals: { text: 'Shop Now' }  %>
+      </div>
+      <%# Banner Numbers %>
+      <div class="d-flex flex-column flex-sm-row flex-lg-row gap-2 gap-sm-3 pt-3 pt-sm-4 pt-lg-5 justify-content-center justify-content-lg-start">
+        <div class="montserrat-normal pe-2 text-center text-sm-start">
+          <p class="banner-number">200+</p>
+          <p class="text-secondary banner-text-small">International Brands</p>
+        </div>
+        <div class="divider-line-vertical me-2 d-none d-sm-block"></div>
+        <div class="montserrat-normal text-center text-sm-start">
+          <p class="banner-number">2000+</p>
+          <p class="text-secondary banner-text-small">High-Quality Products</p>
+        </div>
+        <div class="divider-line-vertical me-2 d-none d-sm-block"></div>
+        <div class="montserrat-normal text-center text-sm-start">
+          <p class="banner-number">30000+</p>
+          <p class="text-secondary banner-text-small">Happy Customers</p>
+        </div>
+      </div>
+    </div>
+    <%# Banner Image %>
+    <div class="banner-image-container">
+      <%= image_tag "home/banner-image.png", class: "banner-image" %>
+    </div>
+  </div>
+</div>

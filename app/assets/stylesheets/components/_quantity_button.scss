@@ -15,9 +15,9 @@ input#quantity[type="number"] {
 /* The Container */
 .quantity-selector {
   display: inline-flex;
-  background-color: #8ebfde; /* The blue color from your image */
-  border-radius: 50px; /* Makes it a pill shape */
-  overflow: hidden; /* Keeps child elements inside the pill shape */
+  background-color: #8ebfde;
+  border-radius: 50px;
+  overflow: hidden;
   padding: 0;
 }
 

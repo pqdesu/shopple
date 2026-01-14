@@ -1,0 +1,47 @@
+.horizontal-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  padding: 0 0 1rem 0;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f1f1f1;
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+
+    &:hover {
+      background: #999;
+    }
+  }
+}
+
+.carousel-item-container {
+  flex: 0 0 calc(25% - 1.125rem); // Show 4 items max
+  min-width: 0;
+
+  @media (max-width: 1199px) {
+    flex: 0 0 calc(33.333% - 1rem); // 3 items on medium screens
+  }
+
+  @media (max-width: 768px) {
+    flex: 0 0 calc(50% - 1rem); // 2 items on tablet
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  @media (max-width: 640px) {
+    flex: 0 0 calc(90% - 0.45rem); // 1 item on mobile
+  }
+}
