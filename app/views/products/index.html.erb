@@ -12,11 +12,11 @@
         Categories
       </button>
       <ul class="dropdown-menu dropdown-menu-end p-3">
-        <%= link_to products_path, class: "products-link" do %>
+        <%= link_to products_path, class: "text-decoration-none text-black" do %>
           <li class="category-button-list mt-3 p-2 mb-3">All</li>
         <% end %>
         <% @categories.each do |category| %>
-          <%= link_to products_path(category: category), class: "products-link" do %>
+          <%= link_to products_path(category: category), class: "text-decoration-none text-black" do %>
             <li class="category-button-list p-2 mb-3"><%= category.capitalize %></li>
           <% end %>
         <% end %>
@@ -28,7 +28,7 @@
     <% @products.each do |product| %>
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
         <div class="products-detail">
-          <%= link_to product_path(product), class: "products-link" do %>
+          <%= link_to product_path(product), class: "text-decoration-none text-black" do %>
             <%# Image %>
             <div class="products-image mx-auto d-flex flex-column justify-content-center align-items-center">
               <%= image_tag product.image_url %>

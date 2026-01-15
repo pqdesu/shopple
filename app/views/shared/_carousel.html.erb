@@ -2,7 +2,7 @@
   <% products.each do |product| %>
     <div class="carousel-item-container">
       <div class="products-detail">
-        <%= link_to product_path(product), class: "products-link" do %>
+        <%= link_to product_path(product), class: "text-decoration-none text-black" do %>
           <%# Image %>
           <div class="products-image mx-auto d-flex flex-column justify-content-center align-items-center">
             <%= image_tag product.image_url %>
