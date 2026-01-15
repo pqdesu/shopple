@@ -1,9 +1,15 @@
-// Divider-line
-.divider-line {
+// Divider-lines
+.divider-line-horizontal {
   background-color: #dddddd;
   margin: auto;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   height: 0.1rem;
   width: 100%;
+}
+
+.divider-line-vertical {
+  min-height: 100%;
+  width: 1px;
+  background-color: #b6b6b6;
 }
