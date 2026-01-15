@@ -40,8 +40,8 @@
     <%# Size, Cart, Reviews Column %>
     <div class="d-flex flex-column">
       <% if ["men's clothing", "women's clothing"].include?(@product.category) && @product.name != "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" %>
-        <%# Divider-line %>
-        <div class="divider-line"></div>
+        <%# Divider-line-horizontal %>
+        <div class="divider-line-horizontal"></div>
         <div id="size-buttons" class="size-buttons mb-1" data-controller="size">
           <p class="text-secondary mb-1">Choose size:</p>
           <button type="button" class="size-btn unselected" data-size="S">Small</button>
@@ -50,8 +50,8 @@
           <button type="button" class="size-btn unselected" data-size="XL">Extra Large</button>
         </div>
       <% end %>
-      <%# Divider-line %>
-      <div class="divider-line"></div>
+      <%# Divider-line-horizontal %>
+      <div class="divider-line-horizontal"></div>
       <%# Quantity Selector %>
       <div class="d-flex">
         <div class="d-flex align-items-center me-3 quantity-selector" data-controller="quantity">
@@ -82,8 +82,8 @@
           <% end %>
         </div>
       </div>
-      <%# Divider-line %>
-      <div class="divider-line"></div>
+      <%# Divider-line-horizontal %>
+      <div class="divider-line-horizontal"></div>
       <%# Reviews %>
       <div class="reviews">
         <h5>
