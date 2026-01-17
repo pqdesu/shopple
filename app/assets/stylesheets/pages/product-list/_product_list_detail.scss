@@ -1,13 +1,11 @@
-.products-detail {
+.product-list-box {
   min-width: 20rem;
   min-height: 35rem;
   max-width: 20rem;
   max-height: 35rem;
   margin: auto;
-}
 
-@media (min-width: 1024px) {
-  .products-detail {
+  @media (min-width: 1024px) {
     min-width: 17rem;
     min-height: 32rem;
     max-width: 17rem;

@@ -7,17 +7,17 @@
       <h3 class="category-text montserrat-normal p-2">All Products</h3>
     <% end %>
     <%# Dropdown menu for category %>
-    <div class="dropdown secondary-button mt-2">
+    <div class="dropdown category-button mt-2">
       <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Categories
       </button>
       <ul class="dropdown-menu dropdown-menu-end p-3">
-        <%= link_to products_path, class: "products-link" do %>
-          <li class="secondary-button-list mt-3 p-2 mb-3">All</li>
+        <%= link_to products_path, class: "text-decoration-none text-black" do %>
+          <li class="category-button-list mt-3 p-2 mb-3">All</li>
         <% end %>
         <% @categories.each do |category| %>
-          <%= link_to products_path(category: category), class: "products-link" do %>
-            <li class="secondary-button-list p-2 mb-3"><%= category.capitalize %></li>
+          <%= link_to products_path(category: category), class: "text-decoration-none text-black" do %>
+            <li class="category-button-list p-2 mb-3"><%= category.capitalize %></li>
           <% end %>
         <% end %>
       </ul>
@@ -27,14 +27,14 @@
   <div class="row">
     <% @products.each do |product| %>
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-        <div class="products-detail">
-          <%= link_to product_path(product), class: "products-link" do %>
+        <div class="product-list-box">
+          <%= link_to product_path(product), class: "text-decoration-none text-black" do %>
             <%# Image %>
-            <div class="products-image mx-auto d-flex flex-column justify-content-center align-items-center">
+            <div class="product-list-image mx-auto d-flex flex-column justify-content-center align-items-center">
               <%= image_tag product.image_url %>
             </div>
             <%# Name %>
-            <p class="products-name plus-jakarta-sans-bold my-3">
+            <p class="fs-4 plus-jakarta-sans-bold my-3">
               <%= product.name.truncate(45) %>
             </p>
           <% end %>
@@ -44,7 +44,7 @@
             <span class="ms-1"><%= product.rating_rate %>/5</span>
           </div>
           <%# Price %>
-          <p class="products-price plus-jakarta-sans-bold"><%= number_to_currency(product.price) %></p>
+          <p class="fs-5 plus-jakarta-sans-bold"><%= number_to_currency(product.price) %></p>
         </div>
       </div>
     <% end %>

@@ -1,17 +1,17 @@
-<div class="d-flex flex-column flex-md-row product-info px-4 mt-4 gap-4">
+<div class="d-flex flex-column flex-md-row px-4 mt-4 gap-4">
   <%# Product Image %>
   <div class="product-detail-image mx-auto p-4 mb-3 d-flex flex-column align-items-center justify-content-center flex-shrink-0" data-controller="scroll">
     <%= image_tag @product.image_url %>
     <%# Add to favorties button %>
     <% if current_user&.favorited?(@product) %>
       <% favorite = Favorite.find_by(favoritor: current_user, favoritable: @product) %>
-      <%= button_to favorite_path(favorite), method: :delete, data: { turbo_confirm: "Remove from wishlist?" }, class: "btn add-to-wishlist-button" do %>
+      <%= button_to favorite_path(favorite), method: :delete, data: { turbo_confirm: "Remove from wishlist?" }, class: "btn add-to-favorites-button" do %>
         <i class="fa-solid fa-heart red-heart"></i>
       <% end %>
     <% else %>
       <%= button_to favorites_path(product_id: @product.id),
       method: :post,
-      class: "btn add-to-wishlist-button" do %>
+      class: "btn add-to-favorites-button" do %>
         <i class="fa-regular fa-heart"></i>
       <% end %>
     <% end %>
@@ -20,7 +20,7 @@
   <div class="d-flex flex-column flex-grow-1">
     <%# Product Name, Price, Description %>
     <div class="d-flex flex-column mx-2 align-items-md-start">
-      <h1 class="mb-3 product-name montserrat-bold">
+      <h1 class="mb-3 text-black fs-1 montserrat-bold">
         <%= @product.name%>
       </h1>
       <%# Rating %>
@@ -40,8 +40,8 @@
     <%# Size, Cart, Reviews Column %>
     <div class="d-flex flex-column">
       <% if ["men's clothing", "women's clothing"].include?(@product.category) && @product.name != "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" %>
-        <%# Divider-line %>
-        <div class="divider-line"></div>
+        <%# Divider-line-horizontal %>
+        <div class="divider-line-horizontal"></div>
         <div id="size-buttons" class="size-buttons mb-1" data-controller="size">
           <p class="text-secondary mb-1">Choose size:</p>
           <button type="button" class="size-btn unselected" data-size="S">Small</button>
@@ -50,8 +50,8 @@
           <button type="button" class="size-btn unselected" data-size="XL">Extra Large</button>
         </div>
       <% end %>
-      <%# Divider-line %>
-      <div class="divider-line"></div>
+      <%# Divider-line-horizontal %>
+      <div class="divider-line-horizontal"></div>
       <%# Quantity Selector %>
       <div class="d-flex">
         <div class="d-flex align-items-center me-3 quantity-selector" data-controller="quantity">
@@ -82,8 +82,8 @@
           <% end %>
         </div>
       </div>
-      <%# Divider-line %>
-      <div class="divider-line"></div>
+      <%# Divider-line-horizontal %>
+      <div class="divider-line-horizontal"></div>
       <%# Reviews %>
       <div class="reviews">
         <h5>

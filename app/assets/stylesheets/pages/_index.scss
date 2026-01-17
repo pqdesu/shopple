@@ -1,8 +1,9 @@
 // Import page-specific CSS files here.
-@import "product_show_page";
-@import "product_detail_image";
-@import "product_name";
-@import "products_image";
-@import "products_detail";
-@import "products_name";
-@import "products_price";
+@import "product-list/product_list_image";
+@import "product-list/product_list_detail";
+@import "product-detail/cart_button";
+@import "product-detail/favorite_button";
+@import "product-detail/product_detail_image";
+@import "product-detail/quantity_button";
+@import "product-detail/reviews";
+@import "product-detail/size_button";
